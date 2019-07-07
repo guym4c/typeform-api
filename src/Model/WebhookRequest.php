@@ -3,6 +3,7 @@
 namespace Guym4c\TypeformAPI\Model;
 
 use Nyholm\Psr7\Request;
+use Psr\Http\Message\RequestInterface;
 
 class WebhookRequest extends AbstractModel {
 
@@ -33,7 +34,7 @@ class WebhookRequest extends AbstractModel {
         self::hydrate($this, $json);
     }
 
-    public static function parseRequest(Request $request, ?string $secret = null): self {
+    public static function parseRequest(RequestInterface $request, ?string $secret = null): self {
         $json = json_decode($request->getBody()->getContents(), true);
 
         $event = new self($json);
@@ -51,7 +52,7 @@ class WebhookRequest extends AbstractModel {
         return new self(json_decode($json, true));
     }
 
-    public static function validateSignature(Request $request, string $secret): bool {
+    public static function validateSignature(RequestInterface $request, string $secret): bool {
 
         return 'sha256=' . base64_encode(
                 hash_hmac('sha256', $request->getBody(), $secret, true)) ==
