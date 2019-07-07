@@ -1,0 +1,29 @@
+{
+    "name": "guym4c/typeform-api",
+    "description": "PHP Typeform API client",
+    "type": "library",
+    "license": "MIT",
+    "homepage": "https://github.com/guym4c/typeform-api",
+    "keywords": ["typeform", "api"],
+    "authors": [
+        {
+            "name": "Guy Mac",
+            "email": "hello@guymac.eu",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "Guym4c\\TypeformAPI\\": "src/"
+        }
+    },
+    "require": {
+        "nyholm/psr7": "^1.1",
+        "guzzlehttp/guzzle": "^6.3",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "8"
+    }
+}
