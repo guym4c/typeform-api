@@ -16,8 +16,11 @@ class Field extends AbstractModel {
     /** @var string */
     public $ref;
 
-    /** @var array */
-    public $properties;
+    /** @var bool */
+    public $allowMultipleSelections;
+
+    /** @var bool */
+    public $allowOtherChoice;
 
     public function __construct(array $json) {
         $this->hydrate($json);
