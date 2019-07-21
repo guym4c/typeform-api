@@ -10,7 +10,7 @@ class Answer extends AbstractModel {
 
     public $answer;
 
-    public function __construct(array $json) {
+    public function __construct(array $json, Definition $definition) {
 
         $this->answer = $json['text'] ??
             $json['choice'] ??
@@ -20,10 +20,22 @@ class Answer extends AbstractModel {
             $json['url'] ??
             $json['number'] ??
             $json['file_url'] ??
-            (object) $json['payment'];
+            $json['payment'];
 
-        $this->field = new Field($json['field']);
+        $this->field = $this->getFieldFromDefinition($json['field']['id'], $definition);
 
-        self::hydrate($this, $json);
+        $this->hydrate($json);
+    }
+
+    private function getFieldFromDefinition(string $answerFieldId, Definition $definition): ?Field {
+
+        foreach ($definition->fields as $field) {
+
+            if ($field->id = $answerFieldId) {
+                return $field;
+            }
+        }
+
+        return null;
     }
 }

@@ -2,7 +2,6 @@
 
 namespace Guym4c\TypeformAPI\Model;
 
-use Nyholm\Psr7\Request;
 use Psr\Http\Message\RequestInterface;
 
 class WebhookRequest extends AbstractModel {

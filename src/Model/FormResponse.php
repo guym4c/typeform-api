@@ -34,7 +34,7 @@ class FormResponse extends AbstractModel {
         $this->definition = new Definition($json['definition']);
 
         foreach ($json['answers'] as $answer) {
-            $this->answers[] = new Answer($answer);
+            $this->answers[] = new Answer($answer, $this->definition);
         }
 
         $this->hydrate($json);
