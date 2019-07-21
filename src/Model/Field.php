@@ -20,7 +20,7 @@ class Field extends AbstractModel {
     public $properties;
 
     public function __construct(array $json) {
-        self::hydrate($this, $json);
+        $this->hydrate($json);
     }
 
 }

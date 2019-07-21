@@ -37,7 +37,7 @@ class FormResponse extends AbstractModel {
             $this->answers[] = new Answer($answer);
         }
 
-        self::hydrate($this, $json);
+        $this->hydrate($json);
     }
 
 }

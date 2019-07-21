@@ -9,11 +9,11 @@ abstract class AbstractModel {
             preg_replace('/([A-Z])/', '_$1', $property));
     }
 
-    protected static function hydrate(AbstractModel $model, array $json): void {
-        foreach (get_object_vars($model) as $property => $value) {
+    protected function hydrate(array $json): void {
+        foreach (get_object_vars($this) as $property => $value) {
 
             if (empty($value)) {
-                $model->{$property} = $json[$model->parsePropertyName($property)] ?? null;
+                $this->{$property} = $json[$this->parsePropertyName($property)] ?? null;
             }
         }
     }

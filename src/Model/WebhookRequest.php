@@ -31,7 +31,7 @@ class WebhookRequest extends AbstractModel {
             $this->error = 'JSON: ' . json_last_error_msg();
         }
 
-        self::hydrate($this, $json);
+        $this->hydrate($json);
     }
 
     public static function parseRequest(RequestInterface $request, ?string $secret = null): self {

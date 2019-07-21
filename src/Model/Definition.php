@@ -19,7 +19,7 @@ class Definition extends AbstractModel {
             $this->fields[] = new Field($field);
         }
 
-        self::hydrate($this, $json);
+        $this->hydrate($json);
     }
 
 }
