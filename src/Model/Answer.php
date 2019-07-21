@@ -28,7 +28,7 @@ class Answer extends AbstractModel {
 
         foreach ($definition->fields as $field) {
 
-            if ($field->id = $answerFieldId) {
+            if ($field->id == $answerFieldId) {
                 return $field;
             }
         }
