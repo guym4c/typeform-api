@@ -4,8 +4,7 @@ namespace Guym4c\TypeformAPI\Model;
 
 class Answer extends AbstractModel {
 
-    public $type;
-
+    /** @var ?Field */
     public $field;
 
     public $answer;
@@ -23,8 +22,6 @@ class Answer extends AbstractModel {
             $json['payment'];
 
         $this->field = $this->getFieldFromDefinition($json['field']['id'], $definition);
-
-        $this->hydrate($json);
     }
 
     private function getFieldFromDefinition(string $answerFieldId, Definition $definition): ?Field {
@@ -35,7 +32,6 @@ class Answer extends AbstractModel {
                 return $field;
             }
         }
-
         return null;
     }
 }

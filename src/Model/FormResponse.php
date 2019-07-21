@@ -3,6 +3,7 @@
 namespace Guym4c\TypeformAPI\Model;
 
 use DateTime;
+use Exception;
 
 class FormResponse extends AbstractModel {
 
@@ -27,10 +28,15 @@ class FormResponse extends AbstractModel {
     /** @var Answer[] */
     public $answers;
 
+    /**
+     * FormResponse constructor.
+     * @param array $json
+     * @throws Exception
+     */
     public function __construct(array $json) {
 
-        $this->landedAt = strtotime($json['landed_at']);
-        $this->submittedAt = strtotime($json['submitted_at']);
+        $this->landedAt = new DateTime($json['landed_at']);
+        $this->submittedAt = new DateTime($json['submitted_at']);
         $this->definition = new Definition($json['definition']);
 
         foreach ($json['answers'] as $answer) {
