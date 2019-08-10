@@ -2,11 +2,12 @@
 
 namespace Guym4c\TypeformAPI\Model\Resource\Collection;
 
+use Guym4c\TypeformAPI\Model\AbstractModel;
 use Guym4c\TypeformAPI\Request;
 use Guym4c\TypeformAPI\Typeform;
 use Guym4c\TypeformAPI\TypeformApiException;
 
-class Loader {
+class Loader extends AbstractModel {
 
     /** @var Typeform */
     private $typeform;

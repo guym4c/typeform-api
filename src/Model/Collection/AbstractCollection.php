@@ -11,4 +11,11 @@ abstract class AbstractCollection extends AbstractModel {
     public $pageCount;
 
     public $items;
+
+    public function __construct(string $itemResource, array $json) {
+        foreach ($json['items'] as $item) {
+            $this->items[] = new $itemResource($item);
+        }
+        $this->hydrate($json);
+    }
 }
