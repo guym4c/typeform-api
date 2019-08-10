@@ -4,10 +4,7 @@ namespace Guym4c\TypeformAPI\Model\Webhook;
 
 use Guym4c\TypeformAPI\Model\AbstractModel;
 
-class Definition extends AbstractModel {
-
-    /** @var string */
-    public $id;
+class Definition extends AbstractUniqueModel {
 
     /** @var string */
     public $title;

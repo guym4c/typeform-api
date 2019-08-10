@@ -3,13 +3,10 @@
 namespace Guym4c\TypeformAPI\Model\Webhook;
 
 use Exception;
-use Guym4c\TypeformAPI\Model\AbstractModel;
+use Guym4c\TypeformAPI\Model\AbstractUniqueModel;
 use Psr\Http\Message\RequestInterface;
 
-class WebhookRequest extends AbstractModel {
-
-    /** @var string */
-    public $eventId;
+class WebhookRequest extends AbstractUniqueModel {
 
     /** @var string */
     public $eventType;
@@ -30,6 +27,7 @@ class WebhookRequest extends AbstractModel {
      */
     public function __construct(array $json) {
 
+        $this->id = $json['event_id'];
         $this->formResponse = new FormResponse($json['form_response']);
 
         if (json_last_error() != JSON_ERROR_NONE) {
