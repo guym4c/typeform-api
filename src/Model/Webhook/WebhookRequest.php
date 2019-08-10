@@ -1,7 +1,9 @@
 <?php
 
-namespace Guym4c\TypeformAPI\Model;
+namespace Guym4c\TypeformAPI\Model\Webhook;
 
+use Exception;
+use Guym4c\TypeformAPI\Model\AbstractModel;
 use Psr\Http\Message\RequestInterface;
 
 class WebhookRequest extends AbstractModel {
@@ -21,6 +23,11 @@ class WebhookRequest extends AbstractModel {
     /** @var ?string  */
     public $error;
 
+    /**
+     * WebhookRequest constructor.
+     * @param array $json
+     * @throws Exception
+     */
     public function __construct(array $json) {
 
         $this->formResponse = new FormResponse($json['form_response']);
@@ -33,6 +40,12 @@ class WebhookRequest extends AbstractModel {
         $this->hydrate($json);
     }
 
+    /**
+     * @param RequestInterface $request
+     * @param string|null      $secret
+     * @return WebhookRequest
+     * @throws Exception
+     */
     public static function parseRequest(RequestInterface $request, ?string $secret = null): self {
         $json = json_decode($request->getBody()->getContents(), true);
 
@@ -47,6 +60,11 @@ class WebhookRequest extends AbstractModel {
 
     }
 
+    /**
+     * @param string $json
+     * @return WebhookRequest
+     * @throws Exception
+     */
     public static function parseJson(string $json): self {
         return new self(json_decode($json, true));
     }

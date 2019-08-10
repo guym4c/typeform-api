@@ -2,7 +2,8 @@
 
 namespace Guym4c\TypeformAPI;
 
-use Guym4c\TypeformAPI\Model\WebhookRequest;
+use Exception;
+use Guym4c\TypeformAPI\Model\Webhook\WebhookRequest;
 use Psr\Http\Message\RequestInterface;
 
 class Typeform {
@@ -15,10 +16,21 @@ class Typeform {
         $this->key = $key;
     }
 
+    /**
+     * @param RequestInterface $request
+     * @param string|null      $secret
+     * @return WebhookRequest
+     * @throws Exception
+     */
     public static function parseWebhook(RequestInterface $request, ?string $secret = null): WebhookRequest {
         return WebhookRequest::parseRequest($request, $secret);
     }
 
+    /**
+     * @param string $json
+     * @return WebhookRequest
+     * @throws Exception
+     */
     public static function parseWebhookJson(string $json): WebhookRequest {
         return WebhookRequest::parseJson($json);
     }

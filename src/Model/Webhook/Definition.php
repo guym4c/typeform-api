@@ -1,6 +1,8 @@
 <?php
 
-namespace Guym4c\TypeformAPI\Model;
+namespace Guym4c\TypeformAPI\Model\Webhook;
+
+use Guym4c\TypeformAPI\Model\AbstractModel;
 
 class Definition extends AbstractModel {
 
