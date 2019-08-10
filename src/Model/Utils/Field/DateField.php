@@ -2,7 +2,7 @@
 
 namespace Guym4c\TypeformAPI\Model\Utils\Field;
 
-class DateField extends GenericField {
+class DateField extends Field {
 
     /**
      * @var string

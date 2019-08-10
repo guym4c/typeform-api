@@ -6,7 +6,10 @@ use Guym4c\TypeformAPI\Model\AbstractModel;
 
 class Attachment extends AbstractModel {
 
-    /** @var string */
+    /**
+     * @var string
+     * @see AttachmentType
+     */
     public $type;
 
     /** @var string */

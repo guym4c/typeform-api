@@ -2,7 +2,7 @@
 
 namespace Guym4c\TypeformAPI\Model\Utils\Field;
 
-class ScaleField extends GenericField {
+class ScaleField extends Field {
 
     /** @var int */
     public $steps;

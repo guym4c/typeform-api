@@ -1,6 +1,6 @@
 <?php
 
-namespace Guym4c\TypeformAPI\Model\Resource\Collection;
+namespace Guym4c\TypeformAPI\Model\Collection;
 
 use Guym4c\TypeformAPI\Model\AbstractModel;
 use Guym4c\TypeformAPI\Request;
@@ -18,7 +18,7 @@ class Loader extends AbstractModel {
     /** @var string */
     private $href;
 
-    public function __construct(string $typeform, string $resource, string $href) {
+    public function __construct(Typeform $typeform, string $resource, string $href) {
         $this->typeform = $typeform;
         $this->resource = $resource;
         $this->href = $href;

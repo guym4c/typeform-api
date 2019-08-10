@@ -12,11 +12,13 @@ class Choice extends AbstractModel {
     /** @var string */
     public $label;
 
-    /** @var Attachment */
+    /** @var ?Attachment */
     public $attachment;
 
     public function __construct(array $json) {
-        $this->attachment = new Attachment($json['attachment']);
+        if (!empty($json['attachment'])) {
+            $this->attachment = new Attachment($json['attachment']);
+        }
         $this->hydrate($json);
     }
 }

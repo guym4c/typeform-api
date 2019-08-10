@@ -2,7 +2,7 @@
 
 namespace Guym4c\TypeformAPI\Model\Utils\Field;
 
-class PaymentField extends GenericField {
+class PaymentField extends ButtonField {
 
     /**
      * @var string
