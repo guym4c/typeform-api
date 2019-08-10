@@ -25,11 +25,12 @@ class Request {
 
     public function __construct(Typeform $typeform, string $method, string $uri = '', array $query = [], array $body = []) {
 
-        // TODO check if URI needs endpoint prepending
-
         $this->typeform = $typeform;
         $this->http = new GuzzleHttp\Client();
-        $this->request = new Psr7\Request($method, self::API_ENDPOINT . "/{$uri}");
+        $this->request = new Psr7\Request($method, strpos($uri, self::API_ENDPOINT)
+                ? $uri
+                : self::API_ENDPOINT . $uri);
+
         $this->request = $this->request->withHeader('Authorization', 'Bearer ' . $this->typeform->getKey());
 
         if (!empty($query)) {
