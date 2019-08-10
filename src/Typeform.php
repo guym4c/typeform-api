@@ -3,12 +3,9 @@
 namespace Guym4c\TypeformAPI;
 
 use Guym4c\TypeformAPI\Model\WebhookRequest;
-use GuzzleHttp;
 use Psr\Http\Message\RequestInterface;
 
 class Typeform {
-
-    protected $http;
 
     protected $key;
 
@@ -16,7 +13,6 @@ class Typeform {
 
     public function __construct(string $key) {
         $this->key = $key;
-        $this->http = new GuzzleHttp\Client();
     }
 
     public static function parseWebhook(RequestInterface $request, ?string $secret = null): WebhookRequest {
@@ -31,4 +27,10 @@ class Typeform {
         return WebhookRequest::validateSignature($request, $secret);
     }
 
+    /**
+     * @return string
+     */
+    public function getKey(): string {
+        return $this->key;
+    }
 }
