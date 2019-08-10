@@ -3,16 +3,14 @@
 namespace Guym4c\TypeformAPI\Model\Utils\Field;
 
 use Guym4c\TypeformAPI\Model\Utils\Choice;
-use Guym4c\TypeformAPI\Model\Webhook\Field;
 
-class GroupField extends GenericField {
+class ButtonField extends GenericField {
 
-    //TODO
-
-    /** @var array */
-    public $fields;
+    /** @var string */
+    public $buttonText;
 
     public function __construct(array $json) {
         $this->hydrate($json);
+        $this->hydrate($json['properties']);
     }
 }

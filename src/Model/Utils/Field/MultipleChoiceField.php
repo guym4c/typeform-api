@@ -2,8 +2,8 @@
 
 namespace Guym4c\TypeformAPI\Model\Utils\Field;
 
-class MultipleChoiceField extends ChoiceField {
+class MultipleChoiceField extends AbstractMultipleChoiceField {
 
     /** @var bool */
-    public $allowMultipleSelection;
+    public $verticalAlignment;
 }

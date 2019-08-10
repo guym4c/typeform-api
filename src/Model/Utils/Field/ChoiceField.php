@@ -12,5 +12,6 @@ class ChoiceField extends GenericField {
     public function __construct(array $json) {
         $this->populateArrayType(Choice::class, 'choices', $json);
         $this->hydrate($json);
+        $this->hydrate($json['properties']);
     }
 }
