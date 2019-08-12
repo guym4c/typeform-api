@@ -5,14 +5,19 @@ namespace Guym4c\TypeformAPI;
 use GuzzleHttp;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7;
+use Stiphle\Throttle;
 use Teapot\StatusCode;
 
 class Request {
 
     private const API_ENDPOINT = 'https://api.typeform.com/';
+    private const THROTTLER_ID = 'typeform';
 
     /** @var Typeform */
     private $typeform;
+
+    /** @var Throttle\LeakyBucket */
+    protected $throttle;
 
     /** @var GuzzleHttp\Client */
     private $http;
@@ -51,6 +56,9 @@ class Request {
      * @throws TypeformApiException
      */
     public function getJsonResponse(): array {
+
+        usleep($this->getRateLimitWaitTime() * 1000);
+
         try {
             $response = $this->http->send($this->request, $this->options);
         } catch (GuzzleException $e) {
@@ -65,5 +73,9 @@ class Request {
         }
 
         return json_decode($responseBody, true);
+    }
+
+    protected function getRateLimitWaitTime(): int {
+        return $this->throttle->throttle(self::THROTTLER_ID, 2, 1000);
     }
 }
