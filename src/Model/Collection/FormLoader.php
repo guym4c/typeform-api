@@ -2,8 +2,8 @@
 
 namespace Guym4c\TypeformAPI\Model\Collection;
 
-use Guym4c\TypeformAPI\Model\Resource\Collection\Loader;
 use Guym4c\TypeformAPI\Model\Resource\Form;
+use Guym4c\TypeformAPI\Typeform;
 
 class FormLoader extends Loader {
 
@@ -13,7 +13,7 @@ class FormLoader extends Loader {
     /** @var string */
     public $title;
 
-    public function __construct(string $typeform, array $json) {
+    public function __construct(Typeform $typeform, array $json) {
         parent::__construct($typeform, Form::class, $json['self'][['href']]);
         $this->hydrate($json);
     }

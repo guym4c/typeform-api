@@ -2,8 +2,6 @@
 
 namespace Guym4c\TypeformAPI\Model\Utils;
 
-use Guym4c\TypeformAPI\Model\AbstractModel;
-
 class ThankYouScreen extends AbstractScreen {
 
     /**

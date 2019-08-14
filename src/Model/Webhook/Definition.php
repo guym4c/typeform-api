@@ -2,7 +2,7 @@
 
 namespace Guym4c\TypeformAPI\Model\Webhook;
 
-use Guym4c\TypeformAPI\Model\AbstractModel;
+use Guym4c\TypeformAPI\Model\AbstractUniqueModel;
 
 class Definition extends AbstractUniqueModel {
 
