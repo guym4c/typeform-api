@@ -14,7 +14,7 @@ class FormLoader extends Loader {
     public $title;
 
     public function __construct(Typeform $typeform, array $json) {
-        parent::__construct($typeform, Form::class, $json['self'][['href']]);
+        parent::__construct($typeform, Form::class, $json['self']['href']);
         $this->hydrate($json);
     }
 

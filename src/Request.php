@@ -32,6 +32,7 @@ class Request {
 
         $this->typeform = $typeform;
         $this->http = new GuzzleHttp\Client();
+        $this->throttle = new Throttle\LeakyBucket();
         $this->request = new Psr7\Request($method, strpos($uri, self::API_ENDPOINT)
                 ? $uri
                 : self::API_ENDPOINT . $uri);
