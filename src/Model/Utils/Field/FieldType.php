@@ -3,9 +3,9 @@
 namespace Guym4c\TypeformAPI\Model\Utils\Field;
 
 use MyCLabs\Enum\Enum;
+use ReflectionClass;
 
 class FieldType extends Enum {
-
     const DATE = 'date';
     const DROPDOWN = 'dropdown';
     const EMAIL = 'email';
@@ -25,4 +25,8 @@ class FieldType extends Enum {
     const YES_NO = 'yes_no';
     const PHONE_NUMBER = 'phone_number';
 
+    public static function getAll(): array {
+        return array_values((new ReflectionClass(self::class))
+            ->getConstants());
+    }
 }
