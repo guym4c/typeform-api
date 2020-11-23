@@ -4,6 +4,7 @@ namespace Guym4c\TypeformAPI\Model\Resource;
 
 use Guym4c\TypeformAPI\Model\Collection\Loader;
 use Guym4c\TypeformAPI\Model\Utils\Field\Field;
+use Guym4c\TypeformAPI\Model\Utils\FormSettings;
 use Guym4c\TypeformAPI\Model\Utils\LogicJump;
 use Guym4c\TypeformAPI\Model\Utils\ThankYouScreen;
 use Guym4c\TypeformAPI\Model\Utils\WelcomeScreen;
@@ -59,6 +60,7 @@ class Form extends AbstractResource {
         $this->populateArrayType(LogicJump::class, 'logic', $json);
         $this->theme = new Loader($typeform, '' /* TODO */, $json['theme']['href']);
         $this->workspace = new Loader($typeform, '' /* TODO */, $json['workspace']['href']);
+        $this->settings = new FormSettings($json['settings']);
         $this->url = $json['_links']['display'];
 
         $this->hydrate($json);
