@@ -19,7 +19,7 @@ abstract class AbstractModel {
     }
 
     protected function populateArrayType(string $class, string $key, array $json): void {
-        foreach ($json[$this->parsePropertyName($key)] as $value) {
+        foreach ($json[$this->parsePropertyName($key)] ?? [] as $value) {
             $this->{$key}[] = new $class($value);
         }
     }
